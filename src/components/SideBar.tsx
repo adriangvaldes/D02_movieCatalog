@@ -1,13 +1,12 @@
-import { useContext } from 'react';
-import { MoviesContext } from '../MoviesContext';
+import { useMovies } from '../hooks/useMovies';
 import '../styles/sidebar.scss';
 import { Button } from './Button';
 
 
 export function SideBar() {
-  const { genres } = useContext(MoviesContext);
-  const { handleClickButton } = useContext(MoviesContext);
-  const { selectedGenreId } = useContext(MoviesContext);
+  const { genres } = useMovies();
+  const { handleClickButton } = useMovies();
+  const { selectedGenreId } = useMovies();
   
   return (
     <nav className="sidebar">

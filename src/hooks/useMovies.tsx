@@ -1,6 +1,6 @@
-import { useEffect, useState, ReactNode } from 'react';
+import { useEffect, useState, ReactNode, useContext } from 'react';
 import { createContext } from 'react';
-import { api } from './services/api';
+import { api } from '../services/api';
 
 interface MovieProps {
   imdbID: string;
@@ -71,5 +71,11 @@ export function  MoviesProvider({ children }: MoviesProviderProps) {
       {children}
     </MoviesContext.Provider>
   )
+}
+
+export function useMovies() {
+  const context = useContext(MoviesContext)
+
+  return context;
 }
 

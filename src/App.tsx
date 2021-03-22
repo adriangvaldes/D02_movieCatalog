@@ -1,4 +1,4 @@
-import { MoviesProvider } from './MoviesContext';
+import { MoviesProvider } from './hooks/useMovies';
 import { SideBar } from './components/SideBar';
 import { Content } from './components/Content'
 
