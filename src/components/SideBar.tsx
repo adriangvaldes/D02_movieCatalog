@@ -1,31 +1,26 @@
+import { useContext } from 'react';
+import { MoviesContext } from '../MoviesContext';
 import '../styles/sidebar.scss';
 import { Button } from './Button';
 
-interface sideBarProps {
-  onClickButton: (id:number) => void;
-  listOfGenres: {
-    id: number;
-    name: 'action' | 'comedy' | 'documentary' | 'drama' | 'horror' | 'family';
-    title: string;
-  }[];
-  genreId: number;
-}
 
-
-
-export function SideBar({onClickButton, listOfGenres, genreId} : sideBarProps) {
+export function SideBar() {
+  const { genres } = useContext(MoviesContext);
+  const { handleClickButton } = useContext(MoviesContext);
+  const { selectedGenreId } = useContext(MoviesContext);
+  
   return (
     <nav className="sidebar">
         <span>Watch<p>Me</p></span>
 
         <div className="buttons-container">
-          {listOfGenres.map(genre => (
+          {genres.map(genre => (
             <Button
               key={String(genre.id)}
               title={genre.title}
               iconName={genre.name}
-              onClick={() => onClickButton(genre.id)}
-              selected={genreId === genre.id}
+              onClick={() => handleClickButton(genre.id)}
+              selected={selectedGenreId === genre.id}
             />
           ))}
         </div>
